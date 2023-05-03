@@ -90,7 +90,9 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        //jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuCentro.png"))); // NOI18N
+        System.out.println(getClass());
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tanqueleche.png"))); // NOI18N
+
         jPanel2.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         add(jPanel2);
