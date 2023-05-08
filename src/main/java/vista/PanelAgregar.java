@@ -4,7 +4,7 @@ package vista;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  *
@@ -33,8 +33,8 @@ public class PanelAgregar extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jPanelBotonEliminar = new javax.swing.JPanel();
+        jButton1 = new JButtonRounded();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -80,14 +80,15 @@ public class PanelAgregar extends javax.swing.JPanel {
         jLabel2.setOpaque(true);
         jPanel1.add(jLabel2);
 
-        jPanel4.setOpaque(false);
+        jPanelBotonEliminar.setOpaque(false);
 
         jButton1.setBackground(new Color(0, 168, 198, 135));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Eliminar imagen");
-        jPanel4.add(jButton1);
+        jButton1.setPreferredSize(new Dimension(100,50));
+        jPanelBotonEliminar.add(jButton1);
 
-        jPanel1.add(jPanel4);
+        jPanel1.add(jPanelBotonEliminar);
 
         add(jPanel1, java.awt.BorderLayout.LINE_START);
 
@@ -155,7 +156,7 @@ public class PanelAgregar extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private JButtonRounded jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -168,7 +169,7 @@ public class PanelAgregar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+private javax.swing.JPanel jPanelBotonEliminar;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
