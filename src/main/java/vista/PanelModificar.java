@@ -4,6 +4,8 @@
  */
 package vista;
 
+import controlador.ControladorDailyDairy;
+
 import java.awt.Color;
 
 /**
@@ -12,6 +14,7 @@ import java.awt.Color;
  */
 public class PanelModificar extends javax.swing.JPanel {
 
+    private ControladorDailyDairy controlador;
   /**
    * Creates new form PanelGanado
    */
@@ -289,5 +292,9 @@ public class PanelModificar extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+
+    public void setControlador(ControladorDailyDairy controladorDailyDairy) {
+        this.controlador = controladorDailyDairy;
+    }
     // End of variables declaration//GEN-END:variables
 }
