@@ -24,7 +24,7 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButtonGanado = new JButtonRounded(new java.awt.Color(255, 255, 255, 255), new java.awt.Color(255, 255, 255, 215));
+        btnGanado = new JButtonRounded(new java.awt.Color(255, 255, 255, 255), new java.awt.Color(255, 255, 255, 215));
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -63,7 +63,7 @@ public class PanelInicio extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Corbel", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("<html><body>Sistema de gestión de ganadería </br>de doble propósito </body></html>");
+        jLabel1.setText("<html><body>Sistema de gestión de ganadería de doble propósito </body></html>");
         jLabel1.setToolTipText("");
         jPanel4.add(jLabel1, java.awt.BorderLayout.CENTER);
 
@@ -72,10 +72,10 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel5.setBackground(ModeloDailyDairy.Color.COLOR_VERDE);
         jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
-        jButtonGanado.setBackground(ModeloDailyDairy.Color.COLOR_VERDE);
-        jButtonGanado.setText("Ganado");
-        jButtonGanado.setPreferredSize(new Dimension(100,25));
-        jPanel5.add(jButtonGanado);
+        btnGanado.setBackground(ModeloDailyDairy.Color.COLOR_VERDE);
+        btnGanado.setText("Ganado");
+        btnGanado.setPreferredSize(new Dimension(100,25));
+        jPanel5.add(btnGanado);
 
         jPanel1.add(jPanel5);
 
@@ -94,7 +94,7 @@ public class PanelInicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void addActionListenersPanelInicioComponents(){
-        jButtonGanado.addActionListener(this.controlador);
+        btnGanado.addActionListener(this.controlador);
     }
 
     public void setControlador(ControladorDailyDairy controlador) {
@@ -102,13 +102,13 @@ public class PanelInicio extends javax.swing.JPanel {
         System.out.println("Me ejecuto 'set controlador' ");
     }
 
-    public JButtonRounded getjButtonGanado() {
-        return jButtonGanado;
+    public JButtonRounded getBtnGanado() {
+        return btnGanado;
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButtonRounded jButtonGanado;
+    private JButtonRounded btnGanado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

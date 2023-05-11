@@ -4,12 +4,25 @@ import controlador.ControladorDailyDairy;
 import modelo.ModeloDailyDairy;
 import vista.*;
 
+import java.util.ArrayList;
+
 
 public class Main {
     public static void main(String[] args) {
-        JFrameDailyDairy vista = new JFrameDailyDairy();
+        //Modelo
         ModeloDailyDairy modelo = new ModeloDailyDairy();
-        ControladorDailyDairy controlador = new ControladorDailyDairy(modelo,vista);
+
+        //Vistas
+        ArrayList<Object> vistas = new ArrayList<>();
+        vistas.add(0,new JFrameDailyDairy());
+        vistas.add(1,new PanelInicio());
+        vistas.add(2,new PanelAgregar());
+        vistas.add(3,new PanelModificar());
+        vistas.add(4,new PanelGanado());
+        vistas.add(5,new PanelEliminar());
+
+        //Controlador
+        ControladorDailyDairy controlador = new ControladorDailyDairy(modelo,vistas);
 
     }
 }
