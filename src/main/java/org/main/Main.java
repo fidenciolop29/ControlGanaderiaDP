@@ -1,6 +1,6 @@
 package org.main;
 
-import controlador.ControladorDailyDairy;
+import controlador.*;
 import modelo.ModeloDailyDairy;
 import vista.*;
 
@@ -20,9 +20,12 @@ public class Main {
         vistas.add(3,new PanelModificar());
         vistas.add(4,new PanelGanado());
         vistas.add(5,new PanelEliminar());
+        vistas.add(6,new PanelOrdena());
+        vistas.add(7,new PanelProduccion());
+        vistas.add(8,new PanelAgregarOrdena());
+        vistas.add(9,new PanelEliminarOrdena());
 
         //Controlador
         ControladorDailyDairy controlador = new ControladorDailyDairy(modelo,vistas);
-
     }
 }
