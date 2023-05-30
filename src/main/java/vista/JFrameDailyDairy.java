@@ -17,8 +17,6 @@ public class JFrameDailyDairy extends javax.swing.JFrame {
     public JFrameDailyDairy() throws HeadlessException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1080,640);
-//        this.setDefaultpanel(new PanelInicio());
-//        this.add(this.getDefaultpanel());
         this.setVisible(true);
     }
 

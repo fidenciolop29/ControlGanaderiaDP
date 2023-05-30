@@ -6,6 +6,7 @@ package vista;
 
 import controlador.ControladorDailyDairy;
 
+import javax.swing.*;
 import java.awt.Color;
 
 /**
@@ -79,28 +80,23 @@ public class PanelProduccion extends javax.swing.JPanel {
 
     tablaRegistroProduccion.setModel(new javax.swing.table.DefaultTableModel(
       new Object [][] {
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null}
+        {new String(" "), new String(" "), new String(" ")},
+              {new String(" "), new String(" "), new String(" ")},
+              {new String(" "), new String(" "), new String(" ")},
+              {new String(" "), new String(" "), new String(" ")},
+              {new String(" "), new String(" "), new String(" ")},
+              {new String(" "), new String(" "), new String(" ")},
+              {new String(" "), new String(" "), new String(" ")},
+              {new String(" "), new String(" "), new String(" ")},
+              {new String(" "), new String(" "), new String(" ")},
+
       },
       new String [] {
         "NUMERO", "FECHA", "LECHE"
       }
     ) {
       Class[] types = new Class [] {
-        Byte.class, Object.class, Byte.class
+              Object.class, Object.class, Object.class
       };
 
       public Class getColumnClass(int columnIndex) {
@@ -268,5 +264,89 @@ public class PanelProduccion extends javax.swing.JPanel {
   public void setControlador(ControladorDailyDairy controladorDailyDairy) {
     this.controladorDailyDairy = controladorDailyDairy;
     //this.b.addActionListener(this.controladorDailyDairy);
+    this.btnRegresarFromRegistro.addActionListener(this.controladorDailyDairy);
+    this.btnRegresarFromConsulta.addActionListener(this.controladorDailyDairy);
+    this.btnRegistrar.addActionListener(this.controladorDailyDairy);
+
+  }
+
+  public JButton getBtnGenerar() {
+    return btnGenerar;
+  }
+
+  public void setBtnGenerar(JButton btnGenerar) {
+    this.btnGenerar = btnGenerar;
+  }
+
+  public JButton getBtnRegistrar() {
+    return btnRegistrar;
+  }
+
+  public void setBtnRegistrar(JButton btnRegistrar) {
+    this.btnRegistrar = btnRegistrar;
+  }
+
+  public JButton getBtnRegresarFromConsulta() {
+    return btnRegresarFromConsulta;
+  }
+
+  public void setBtnRegresarFromConsulta(JButton btnRegresarFromConsulta) {
+    this.btnRegresarFromConsulta = btnRegresarFromConsulta;
+  }
+
+  public JButton getBtnRegresarFromRegistro() {
+    return btnRegresarFromRegistro;
+  }
+
+  public void setBtnRegresarFromRegistro(JButton btnRegresarFromRegistro) {
+    this.btnRegresarFromRegistro = btnRegresarFromRegistro;
+  }
+
+  public JButton getBtnSelecFechaCierre() {
+    return btnSelecFechaCierre;
+  }
+
+  public void setBtnSelecFechaCierre(JButton btnSelecFechaCierre) {
+    this.btnSelecFechaCierre = btnSelecFechaCierre;
+  }
+
+  public JButton getBtnSelecFechaInicio() {
+    return btnSelecFechaInicio;
+  }
+
+  public void setBtnSelecFechaInicio(JButton btnSelecFechaInicio) {
+    this.btnSelecFechaInicio = btnSelecFechaInicio;
+  }
+
+  public JTable getTablaConsultaProduccion() {
+    return tablaConsultaProduccion;
+  }
+
+  public void setTablaConsultaProduccion(JTable tablaConsultaProduccion) {
+    this.tablaConsultaProduccion = tablaConsultaProduccion;
+  }
+
+  public JTable getTablaRegistroProduccion() {
+    return tablaRegistroProduccion;
+  }
+
+  public void setTablaRegistroProduccion(JTable tablaRegistroProduccion) {
+    this.tablaRegistroProduccion = tablaRegistroProduccion;
+  }
+
+  public JTextField getTxtFechaCierre() {
+    return txtFechaCierre;
+  }
+
+  public void setTxtFechaCierre(JTextField txtFechaCierre) {
+    this.txtFechaCierre = txtFechaCierre;
+  }
+
+  public JTextField getTxtFechaInicio() {
+    return txtFechaInicio;
+  }
+
+  public void setTxtFechaInicio(JTextField txtFechaInicio) {
+    this.txtFechaInicio = txtFechaInicio;
   }
 }

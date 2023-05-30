@@ -12,22 +12,15 @@ import controlador.*;
 
 public class JButtonRounded extends JButton {
 
-    private int magnitud_redondez = 15;
-    private Color colorBoton = new Color(82,186,142);
-    private Color colorBotonPresionado = new Color(82,186,142).brighter();
-
-
     public JButtonRounded(int magnitud_redondez) {
         this();
         this.setMagnitud_redondez(magnitud_redondez);
     }
-
     public JButtonRounded(Color colorRelleno,Color colorBotonPresionado){
         this();
         this.setColorBoton(colorRelleno);
         this.setColorBotonPresionado(colorBotonPresionado);
     }
-
     public JButtonRounded() {
         setOpaque(false);
         //setPreferredSize(new Dimension(150, 100));
@@ -37,7 +30,7 @@ public class JButtonRounded extends JButton {
 //        setFocusable(false);
         setBorder(null);
         //this.setBackground(new Color(0, 168, 198, 135));
-    }
+}
 
     protected void paintComponent(Graphics g) {
         //Necesitamos pintar primero un rectangulo del mismo color que el fondo para eliminar efectos no deseados
@@ -68,8 +61,6 @@ public class JButtonRounded extends JButton {
         // No dibujar borde
     }
 
-    Shape forma;
-
     public boolean contains(int x, int y) {
         if (forma == null || !forma.getBounds().equals(getBounds())) {
             forma = new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), magnitud_redondez, magnitud_redondez);
@@ -80,18 +71,26 @@ public class JButtonRounded extends JButton {
     public Color getColorBotonPresionado() {
         return colorBotonPresionado;
     }
-    public void setColorBotonPresionado(Color colorBotonPresionado) {
-        this.colorBotonPresionado = colorBotonPresionado;
-    }
+
     public Color getColorBoton() {
         return colorBoton;
     }
+
+    public void setColorBotonPresionado(Color colorBotonPresionado) {
+        this.colorBotonPresionado = colorBotonPresionado;
+    }
+
     public void setColorBoton(Color colorBoton) {
         this.colorBoton = colorBoton;
     }
+
     public void setMagnitud_redondez(int magnitud_redondez) {
         this.magnitud_redondez = magnitud_redondez;
     }
+    Shape forma;
+    private int magnitud_redondez = 15;
+    private Color colorBoton = new Color(82,186,142);
+    private Color colorBotonPresionado = new Color(82,186,142).brighter();
 }
 
 

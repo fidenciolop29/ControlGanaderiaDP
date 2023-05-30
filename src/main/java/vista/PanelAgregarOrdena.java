@@ -6,6 +6,7 @@ package vista;
 
 import controlador.ControladorDailyDairy;
 
+import javax.swing.*;
 import java.awt.Color;
 /**
  *
@@ -154,6 +155,46 @@ public class PanelAgregarOrdena extends javax.swing.JPanel {
   public void setControlador(ControladorDailyDairy controladorDailyDairy) {
     this.controladorDailyDairy = controladorDailyDairy;
     this.btnRegresar.addActionListener(this.controladorDailyDairy);
+    this.btnAgregar.addActionListener(this.controladorDailyDairy);
   }
 
+  public JButton getBtnAgregar() {
+    return btnAgregar;
+  }
+
+  public void setBtnAgregar(JButton btnAgregar) {
+    this.btnAgregar = btnAgregar;
+  }
+
+  public JButton getBtnRegresar() {
+    return btnRegresar;
+  }
+
+  public void setBtnRegresar(JButton btnRegresar) {
+    this.btnRegresar = btnRegresar;
+  }
+
+  public JTable getTablaOrdena() {
+    return tablaOrdena;
+  }
+
+  public void setTablaOrdena(JTable tablaOrdena) {
+    this.tablaOrdena = tablaOrdena;
+  }
+
+  public JTextField getTxtCria() {
+    return txtCria;
+  }
+
+  public void setTxtCria(JTextField txtCria) {
+    this.txtCria = txtCria;
+  }
+
+  public JTextField getTxtNumero() {
+    return txtNumero;
+  }
+
+  public void setTxtNumero(JTextField txtNumero) {
+    this.txtNumero = txtNumero;
+  }
 }

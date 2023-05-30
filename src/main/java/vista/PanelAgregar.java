@@ -5,15 +5,22 @@
 package vista;
 
 import controlador.ControladorDailyDairy;
+import modelo.InteractivePanel;
+import modelo.VacasDailyDairy;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Blob;
 
 /**
  *
  * @author Uriel Méndez Romero
  */
-public class PanelAgregar extends javax.swing.JPanel {
+public class PanelAgregar extends javax.swing.JPanel implements InteractivePanel {
 
   /**
    * Creates new form PanelAgregar
@@ -72,7 +79,8 @@ public class PanelAgregar extends javax.swing.JPanel {
 
         lblTituloSelec.setFont(new java.awt.Font("Corbel", 1, 20)); // NOI18N
         lblTituloSelec.setForeground(new Color(255, 255, 255));
-        lblTituloSelec.setText("<html><body>Seleccionar imagen</body></html>");
+        lblTituloSelec.setText("Seleccionar imagen");
+        lblTituloSelec.setHorizontalAlignment(SwingConstants.CENTER);
         lblTituloSelec.setToolTipText("");
         lblTituloSelec.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         lblTituloSelec.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
@@ -81,12 +89,11 @@ public class PanelAgregar extends javax.swing.JPanel {
 
         lblSubSelec.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         lblSubSelec.setForeground(new Color(255, 255, 255));
-        lblSubSelec.setText("<html><body>Seleccione la imagen del ganado</body></html>");
+        lblSubSelec.setText("<html>Seleccione la imagen del ganado</html>");
         lblSubSelec.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblSubSelec.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
         lblSubSelec.setPreferredSize(new java.awt.Dimension(100, 18));
         btnSelecImagen.add(lblSubSelec);
-
         panelIzquierda.add(btnSelecImagen);
 
         lblImagenGanado.setToolTipText("");
@@ -189,7 +196,7 @@ public class PanelAgregar extends javax.swing.JPanel {
         panelCentro.add(lblDescripcion);
 
         cboxDescripcion.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        cboxDescripcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vaca", "Toro", "Novillo", "Novilla", "Vaquillla", "Cria" }));
+        cboxDescripcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vaca", "Toro", "Novillo", "Novilla", "Vaquilla", "Cria" }));
         cboxDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxDescripcionActionPerformed(evt);
@@ -211,12 +218,34 @@ public class PanelAgregar extends javax.swing.JPanel {
         panelDerecha.add(panelCentro, java.awt.BorderLayout.CENTER);
 
         add(panelDerecha, java.awt.BorderLayout.CENTER);
-    }// </editor-fold>//GEN-END:initComponents
+
+      try {
+          image = ImageIO.read(new File("src/main/resources/imagenes/vacaDefaultverde2.png"));
+      } catch (IOException e) {
+          throw new RuntimeException(e);
+      }
+
+  }// </editor-fold>//GEN-END:initComponents
 
     private void cboxDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxDescripcionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxDescripcionActionPerformed
 
+    public JLabel getLblSubSelec() {
+        return lblSubSelec;
+    }
+
+    public void setLblSubSelec(JLabel lblSubSelec) {
+        this.lblSubSelec = lblSubSelec;
+    }
+
+    public JLabel getLblTituloSelec() {
+        return lblTituloSelec;
+    }
+
+    public void setLblTituloSelec(JLabel lblTituloSelec) {
+        this.lblTituloSelec = lblTituloSelec;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -246,6 +275,16 @@ public class PanelAgregar extends javax.swing.JPanel {
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtRaza;
 
+    public BufferedImage image;
+
+    public JLabel getLblImagenGanado() {
+        return lblImagenGanado;
+    }
+
+    public void setLblImagenGanado(JLabel lblImagenGanado) {
+        this.lblImagenGanado = lblImagenGanado;
+    }
+
     private ControladorDailyDairy controladorDailyDairy;
     public ControladorDailyDairy getControladorDailyDairy() {
         return controladorDailyDairy;
@@ -255,6 +294,13 @@ public class PanelAgregar extends javax.swing.JPanel {
         this.controladorDailyDairy = controladorDailyDairy;
         this.btnRegresar.addActionListener(this.controladorDailyDairy);
         this.btnAgregar.addActionListener(this.controladorDailyDairy);
+        this.cboxDescripcion.addItemListener(this.controladorDailyDairy);
+        //this.lblImagenGanado.addMouseListener(this.controladorDailyDairy);
+        this.lblTituloSelec.addMouseListener(this.controladorDailyDairy);
+        this.lblSubSelec.addMouseListener(this.controladorDailyDairy);
+        this.btnAgregar.addMouseListener(this.controladorDailyDairy);
+        this.btnEliminarImagen.addMouseListener(this.controladorDailyDairy);
+
     }
 
     public JButton getBtnRegresar() {
@@ -337,5 +383,16 @@ public class PanelAgregar extends javax.swing.JPanel {
 
     public void setTxtRaza(JTextField txtRaza) {
         this.txtRaza = txtRaza;
+    }
+
+    @Override
+    public void refreshPanel() {
+
+        lblImagenGanado.setIcon(new ImageIcon(image));
+        revalidate();
+        repaint();
+
+        this.lblTituloSelec.repaint();
+
     }
 }

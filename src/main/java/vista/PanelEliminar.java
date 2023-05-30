@@ -5,15 +5,20 @@
 package vista;
 
 import controlador.ControladorDailyDairy;
+import modelo.InteractivePanel;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 
 /**
  *
  * @author Uriel Méndez Romero
  */
-public class PanelEliminar extends javax.swing.JPanel {
+public class PanelEliminar extends javax.swing.JPanel implements InteractivePanel {
 
   /**
    * Creates new form PanelGanado
@@ -161,10 +166,85 @@ public class PanelEliminar extends javax.swing.JPanel {
   public void setControlador(ControladorDailyDairy controladorDailyDairy) {
     this.controladorDailyDairy = controladorDailyDairy;
     this.btnRegresar.addActionListener(this.controladorDailyDairy);
+    this.btnEliminar.addActionListener(this.controladorDailyDairy);
   }
 
   public JButton getBtnRegresar() {
     return this.btnRegresar;
   }
     // End of variables declaration//GEN-END:variables
+
+
+  public JButton getBtnEliminar() {
+    return btnEliminar;
+  }
+
+  public void setBtnEliminar(JButton btnEliminar) {
+    this.btnEliminar = btnEliminar;
+  }
+
+  public JTable getTablaGanado() {
+    return tablaGanado;
+  }
+
+  public void setTablaGanado(JTable tablaGanado) {
+    this.tablaGanado = tablaGanado;
+  }
+
+  public JTextField getTxtNumero() {
+    return txtNumero;
+  }
+
+  public void setTxtNumero(JTextField txtNumero) {
+    this.txtNumero = txtNumero;
+  }
+
+  @Override
+  public void refreshPanel() {
+
+    if (controladorDailyDairy.selectedCow != null){
+      this.txtNumero.setText(controladorDailyDairy.selectedCow.getNumeroGanado());
+    }else{
+      this.txtNumero.setText(null);
+    }
+
+    JTable table = this.getTablaGanado();
+    DefaultTableModel tableModel = (DefaultTableModel) this.getTablaGanado().getModel();
+
+    try {
+      // Crear la declaración SQL
+      String sql = "SELECT numeroGanado, fierroGanado, colorGanado, razaGanado, descripcionGanado, sexoGanado FROM ganado WHERE bajaMuerteExtravio = '1'";
+      Statement statement = this.controladorDailyDairy.connection.createStatement();
+      ResultSet resultSet = statement.executeQuery(sql);
+
+      // Recorrer el resultado y obtener los datos
+
+      ResultSetMetaData metaData = resultSet.getMetaData();
+      String[] columnNames = new String[metaData.getColumnCount()];
+
+      // Obtener los nombres de las columnas y almacenarlos en el array
+      for (int i = 0; i < columnNames.length; i++) {
+        columnNames[i] = metaData.getColumnName(i + 1);
+      }
+
+
+      // Recorrer el resultado y agregar las filas al DefaultTableModel
+      while (resultSet.next()) {
+        Object[] rowData = new Object[columnNames.length];
+        for (int i = 0; i < columnNames.length; i++) {
+          rowData[i] = resultSet.getObject(i + 1);
+        }
+        tableModel.addRow(rowData);
+      }
+
+
+      // Cerrar el ResultSet, el Statement y la conexión
+      resultSet.close();
+      statement.close();
+
+    }catch (Exception e){
+
+    }
+
+  }
 }

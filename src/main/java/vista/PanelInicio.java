@@ -39,6 +39,7 @@ public class PanelInicio extends javax.swing.JPanel {
     lblDescripcion = new javax.swing.JLabel();
     panelBoton = new javax.swing.JPanel();
     btnGanado = new javax.swing.JButton();
+    btnVenta = new javax.swing.JButton();
     panelDerecha = new javax.swing.JPanel();
     lblImagen = new javax.swing.JLabel();
 
@@ -94,6 +95,14 @@ public class PanelInicio extends javax.swing.JPanel {
     btnGanado.setMargin(new java.awt.Insets(5, 18, 5, 18));
     panelBoton.add(btnGanado);
 
+    btnVenta.setBackground(new Color(254, 254, 254));
+    btnVenta.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+    btnVenta.setText("Venta");
+    btnVenta.setFocusPainted(false);
+    btnVenta.setFocusable(false);
+    btnVenta.setMargin(new java.awt.Insets(5, 18, 5, 18));
+    panelBoton.add(btnVenta);
+
     panelIzquierda.add(panelBoton);
 
     add(panelIzquierda);
@@ -111,6 +120,7 @@ public class PanelInicio extends javax.swing.JPanel {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnGanado;
+  private javax.swing.JButton btnVenta;
   private javax.swing.JLabel lblDescripcion;
   private javax.swing.JLabel lblImagen;
   private javax.swing.JLabel lblTitulo1;
@@ -129,6 +139,7 @@ public class PanelInicio extends javax.swing.JPanel {
   public void setControlador(ControladorDailyDairy controladorDailyDairy) {
     this.controladorDailyDairy = controladorDailyDairy;
     this.btnGanado.addActionListener(this.controladorDailyDairy);
+    this.btnVenta.addActionListener(this.controladorDailyDairy);
   }
 
   public JButton getBtnGanado() {
